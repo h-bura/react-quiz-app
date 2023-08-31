@@ -1,0 +1,8 @@
+.quiz {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(#88ff7a, #2bb0ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,34 @@
+.introduce {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(#88ff7a, #2bb0ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.introduce-container {
+  max-width: 700px;
+  background-color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+}
+.introduce-btn {
+  width: 350px;
+  height: 50px;
+  font-size: 18px;
+  background-color: #f4140f;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  cursor: pointer;
+}
