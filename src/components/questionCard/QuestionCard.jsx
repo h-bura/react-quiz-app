@@ -7,8 +7,9 @@ function QuestionCard({
   setScore,
   count,
   setCount,
-  showModal,
   setShowModal,
+  setResponses,
+  responses,
 }) {
   const [timer, setTimer] = useState(30);
 
@@ -19,6 +20,20 @@ function QuestionCard({
     setCount(count + 1);
     if (count === 9) setShowModal(true);
     setTimer(30);
+    setResponses({
+      ...responses,
+      questions: [...responses.questions, questionData[count]?.question],
+      correctAnswers: [
+        ...responses.correctAnswers,
+        questionData[count]?.correct_answer,
+      ],
+      incorrectAnswers: [
+        ...responses.incorrectAnswers,
+        questionData[count]?.incorrect_answers,
+      ],
+      selectedAnswers: [...responses.selectedAnswers, e.currentTarget.value],
+      category: [...responses.category, questionData[count]?.category],
+    });
   };
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,6 +47,7 @@ function QuestionCard({
       clearInterval(interval);
     };
   }, [timer]);
+
   return (
     <div className="questionCard">
       <div className="questionCard-timer">{timer}</div>

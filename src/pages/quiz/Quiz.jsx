@@ -11,6 +11,13 @@ function Quiz() {
   const [score, setScore] = useState(0);
   const [count, setCount] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [responses, setResponses] = useState({
+    questions: [],
+    correctAnswers: [],
+    incorrectAnswers: [],
+    selectedAnswers: [],
+    category: [],
+  });
 
   useEffect(() => {
     const getData = async () => {
@@ -19,10 +26,11 @@ function Quiz() {
     };
     getData();
   }, []);
+
   return (
     <div className="quiz">
       {showModal ? (
-        <Modal score={score} />
+        <Modal score={score} responses={responses} />
       ) : questionData.length ? (
         <QuestionCard
           questionData={questionData}
@@ -30,8 +38,9 @@ function Quiz() {
           setScore={setScore}
           count={count}
           setCount={setCount}
-          showModal={showModal}
           setShowModal={setShowModal}
+          setResponses={setResponses}
+          responses={responses}
         />
       ) : (
         <Loading />

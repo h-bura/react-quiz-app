@@ -7,13 +7,11 @@ export const fetchQuizData = async (difficulty, amount, category) => {
   try {
     const url = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&category=${category}&type=multiple`;
     const response = await fetch(url);
-
     if (!response.ok) {
       throw new Error("API request failed"); // Handle the error
     }
-
     const data = await response.json();
-    console.log(data);
+
     if (data.response_code !== 0) {
       throw new Error("API response error"); // Handle the error
     }
@@ -21,7 +19,7 @@ export const fetchQuizData = async (difficulty, amount, category) => {
       ...dt,
       question: he.decode(dt.question),
       answers: randomArray([...dt.incorrect_answers, dt.correct_answer]).map(
-        (answer) => he.decode(answer)
+        (answer) => he.decode(answer.replace(/&#039;/g, "'"))
       ),
     }));
   } catch (error) {
